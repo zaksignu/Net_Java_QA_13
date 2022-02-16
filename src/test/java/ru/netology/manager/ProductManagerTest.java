@@ -1,16 +1,17 @@
-package ru.netology.manager;
+package ru.netology;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 class ProductManagerTest {
     static ProductRepository repository = new ProductRepository();
     static ProductManager mng = new ProductManager(repository);
@@ -28,7 +29,6 @@ class ProductManagerTest {
     }
 
     @Test
-    @Order(1)
     void add() {
         Product[] actual = {uno, duo, tre, cuatro};
         Product[] excpected = repository.showThings();
@@ -36,101 +36,91 @@ class ProductManagerTest {
     }
 
     @Test
-    @Order(2)
     void removeById() {
-        Product[] actual = {uno, duo, tre};
-        mng.removeById(4);
+        Product[] actual = {uno, duo, cuatro};
+        mng.removeById(3);
         Product[] excpected = repository.showThings();
         assertArrayEquals(excpected, actual);
-        mng.add(cuatro);
+        mng.add(tre);
     }
 
     @Test
-    @Order(3)
-    void searchForBook() {
+    void searchforBook() {
         Product[] actual = {uno, tre};
         Product[] excpected = mng.searchBy("Book");
         assertArrayEquals(excpected, actual);
     }
 
     @Test
-    @Order(4)
-    void searchForSmartphone() {
+    void searchforsmartphone() {
         Product[] actual = {duo, cuatro};
         Product[] excpected = mng.searchBy("smartphone");
         assertArrayEquals(excpected, actual);
     }
 
     @Test
-    @Order(5)
-    void searchForNone() {
+    void searchfornone() {
         Product[] actual = {};
         Product[] excpected = mng.searchBy("z");
         assertArrayEquals(excpected, actual);
     }
 
     @Test
-    @Order(6)
-    void searchForJiovan() {
+    void searchforJiovan() {
         Product[] actual = {uno, tre};
         Product[] excpected = mng.searchBy("Jiovan");
         assertArrayEquals(excpected, actual);
     }
 
     @Test
-    @Order(7)
-    void searchForChina() {
+    void searchforChina() {
         Product[] actual = {duo, cuatro};
         Product[] excpected = mng.searchBy("China");
         assertArrayEquals(excpected, actual);
     }
 
+
     @Test
-    @Order(8)
     void matchesPositiveBook() {
         assertTrue(mng.matches(uno, "Book"));
     }
 
     @Test
-    @Order(9)
     void matchesPositiveChina() {
         assertTrue(mng.matches(duo, "China"));
     }
 
     @Test
-    @Order(10)
     void matchesPositiveJiovan() {
         assertTrue(mng.matches(uno, "Jiovan"));
     }
 
     @Test
-    @Order(11)
     void matchesPositiveSmartphone() {
         assertTrue(mng.matches(duo, "smartphone"));
     }
 
     @Test
-    @Order(12)
     void matchesNegativeBook() {
         assertFalse(mng.matches(duo, "Book"));
     }
 
     @Test
-    @Order(13)
     void matchesNegativeJiovan() {
         assertFalse(mng.matches(duo, "Jiovan"));
     }
 
     @Test
-    @Order(14)
     void matchesNegativeChina() {
         assertFalse(mng.matches(uno, "China"));
     }
 
     @Test
-    @Order(15)
     void matchesNegativeSmartphone() {
         assertFalse(mng.matches(uno, "smartphone"));
     }
+
+
+
 
 }

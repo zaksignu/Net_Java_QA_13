@@ -6,20 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
     static Book uno = new Book(1, "Cliff", 1000, "Jiovan");
-
     @Test
-    void positiveNameMatch() {
+    void positiveMatch() {
         assertTrue(uno.matches("Cliff"));
     }
-
     @Test
-    void positiveAuthorMatch() {
-        assertTrue(uno.matches("Jiovan"));
-    }
-
-    @Test
-    void negativeNameMatch() {
+    void negativeMatch() {
         assertFalse(uno.matches("Goat"));
     }
-
 }
