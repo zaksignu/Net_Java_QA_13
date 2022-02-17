@@ -1,6 +1,6 @@
 package ru.netology.manager;
 
-import ru.netology.domain.NotFoundException;
+import ru.netology.Exceptions.NotFoundException;
 import ru.netology.domain.Product;
 import ru.netology.repository.ProductRepository;
 
