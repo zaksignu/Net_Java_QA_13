@@ -1,6 +1,6 @@
 package ru.netology.repository;
 
-import ru.netology.Exceptions.NotFoundException;
+import ru.netology.exceptions.NotFoundException;
 import ru.netology.domain.Product;
 
 public class ProductRepository {
