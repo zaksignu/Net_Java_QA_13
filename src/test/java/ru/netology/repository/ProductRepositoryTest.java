@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Order;
 import ru.netology.domain.Book;
+import ru.netology.exceptions.AlreadyExistsException;
 import ru.netology.exceptions.NotFoundException;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
@@ -93,5 +94,11 @@ class ProductRepositoryTest {
         Product[] actual = {uno, tre};
         Product[] excpected = repository.showThings();
         assertArrayEquals(excpected, actual);
+    }
+
+    @Test
+    @Order(9)
+    void addDuplicateId() {
+        assertThrows(AlreadyExistsException.class, () -> mng.add(uno));
     }
 }

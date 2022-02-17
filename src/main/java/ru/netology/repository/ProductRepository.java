@@ -1,5 +1,6 @@
 package ru.netology.repository;
 
+import ru.netology.exceptions.AlreadyExistsException;
 import ru.netology.exceptions.NotFoundException;
 import ru.netology.domain.Product;
 
@@ -8,6 +9,10 @@ public class ProductRepository {
     private Product[] things = new Product[0];
 
     public void addProduct(Product thing) {
+
+        if (findById(thing.getId()) != null) {
+            throw new AlreadyExistsException("Doubled with ID = " + thing.getId());
+        }
         int length = things.length + 1;
         Product[] tmp = new Product[length];
         System.arraycopy(things, 0, tmp, 0, things.length);
@@ -23,8 +28,8 @@ public class ProductRepository {
     public void removeThing(int id) throws NotFoundException {
         int length;
         int p = 0;
-        if (findById(id)==null){
-            throw new NotFoundException("there is nothing at "+id);
+        if (findById(id) == null) {
+            throw new NotFoundException("there is nothing at " + id);
         }
         length = things.length - 1;
         Product[] tmp = new Product[length];
