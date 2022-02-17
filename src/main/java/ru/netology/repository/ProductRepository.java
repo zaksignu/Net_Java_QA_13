@@ -28,7 +28,7 @@ public class ProductRepository {
         }
         length = things.length - 1;
         Product[] tmp = new Product[length];
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i <= length; i++) {
             if (id != things[i].getId()) {
                 tmp[p] = things[i];
                 p++;

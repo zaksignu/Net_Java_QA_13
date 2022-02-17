@@ -78,7 +78,6 @@ class ProductRepositoryTest {
         Product[] actual = {uno, duo, tre};
         Product[] excpected = repository.showThings();
         assertArrayEquals(excpected, actual);
-
     }
 
     @Test
@@ -87,5 +86,12 @@ class ProductRepositoryTest {
         assertThrows(NotFoundException.class, () -> mng.removeById(4));
     }
 
-
+    @Test
+    @Order(8)
+    void removeThingTre1() {
+        repository.removeThing(duo.getId());
+        Product[] actual = {uno, tre};
+        Product[] excpected = repository.showThings();
+        assertArrayEquals(excpected, actual);
+    }
 }
