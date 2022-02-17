@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+import ru.netology.domain.NotFoundException;
 import ru.netology.domain.Product;
 import ru.netology.repository.ProductRepository;
 
@@ -14,9 +15,10 @@ public class ProductManager {
         thingsManager.addProduct(product);
     }
 
-    public void removeById(int id) {
+    public void removeById(int id) throws NotFoundException {
         thingsManager.removeThing(id);
     }
+
 
     public Product[] searchBy(String text) {
         int length = 0;
