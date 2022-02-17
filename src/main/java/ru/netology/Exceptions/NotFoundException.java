@@ -1,4 +1,4 @@
-package ru.netology.domain;
+package ru.netology.Exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message){
